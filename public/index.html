@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trivia Game</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="/socket.io/socket.io.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <!-- Name Screen -->
+  <div id="name-screen" class="screen">
+    <h1>Welcome to Trivia Game</h1>
+    <!-- QR Code for easy join -->
+    <img id="qrCode" alt="Scan to join" style="max-width:200px; margin:10px auto; display:block;" />
+    <label for="bankSelect" style="display:block; margin-top:10px;">Choose Game</label>
+    <select id="bankSelect"></select>
+    <div id="bankNotice" style="font-size:0.9rem; margin-top:6px;"></div>
+    <input type="text" id="nameInput" placeholder="Enter your name">
+    <!-- Button must have id joinBtn to match script.js -->
+    <button id="joinBtn">Join Game</button>
+  </div>
+
+  <!-- Ready Screen -->
+  <div id="ready-screen" class="screen" style="display:none;">
+    <h2>Hello, <span id="playerNameDisplay"></span>!</h2>
+    <!-- Button must have id readyBtn -->
+    <button id="readyBtn">Ready to Start</button>
+  </div>
+
+  <!-- Game Area -->
+  <div id="game-area" class="screen" style="display:none;">
+    <header>
+      <div style="display:flex; align-items:center; gap:10px;">
+        <div id="timer-container">
+          <div id="timer"></div>
+          <div id="progress-bar"></div>
+        </div>
+        <div id="countdownLabel"></div>
+      </div>
+      <div id="questionCount"></div>
+    </header>
+
+    <main id="questionArea">
+      <h2 id="questionText"></h2>
+      <div id="options"></div>
+    </main>
+
+    <!-- Points Earned Display -->
+    <div id="pointsEarned" style="font-size:1.2rem; margin:10px 0; display:none; font-weight:600; text-align:center;"></div>
+
+    <aside id="scoreboardArea" style="display:flex; flex-direction:column; align-items:center;">
+      <h2>Scoreboard</h2>
+      <ul id="scoreboard" style="display:flex; justify-content:center; flex-wrap:wrap; gap:10px; padding:0; margin:0; list-style:none; width:100%; max-width:400px;"></ul>
+    </aside>
+  </div>
+
+  <!-- Modal for game over -->
+  <div id="modal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <h2 id="modalTitle"></h2>
+      <p id="modalMessage"></p>
+      <button id="modalClose">Close</button>
+    </div>
+  </div>
+</body>
+</html>
